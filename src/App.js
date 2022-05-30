@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import Home from "./component/home";
+import Profile from "./component/profile";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <BrowserRouter>
+    <nav>
+        <Link to="/">Home</Link>
+        <Link to="/profile">Profile</Link>
+    </nav>
+    <Routes>
+      <Route path="/" exact element={<Home />} />
+      {/*exact는 path 속성에 넣은 경로값이 정확히 URL의 경로값과 일치할 때만 렌더링되도록 돕습니다*/}
+      <Route path="/home" element={<Home />} />
+      <Route path="/profile" element={<Profile />} />
+    </Routes>
+  </BrowserRouter>
   );
 }
 
